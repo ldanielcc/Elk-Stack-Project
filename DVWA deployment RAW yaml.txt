@@ -1,0 +1,29 @@
+# used to setup DVWA on all 3 web-servers
+---                                                                                          - name: Install and setup DVWA dockers on Web-servers
+  hosts: webservers
+  become: true
+  tasks:
+  - name: install apache httpd 
+    apt:
+      name: apache2
+      state: absent
+  - name: Install docker.io
+    apt:
+      name: docker.io
+      update_cache: yes
+      state: present
+  - name: Install Docker using pip
+    pip:
+      name: docker
+      state: present
+  - name: Install DVWA
+    docker_container:
+      name: dvwa
+      image: cyberxsecurity/dvwa
+      restart_policy: always
+      published_ports: 80:80 #this is to allow http connection
+      state: started
+  - name: Enable docker service on restart
+    systemd:
+      name: docker
+      enabled: yes
