@@ -7,7 +7,9 @@ https://drive.google.com/file/d/1VFzf9gedOQY9LRI5DyRi3IRrOdza4nUl/view?usp=shari
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the.yml file may be used to install only certain pieces of it, such as Filebeat.
 
 # used to setup DVWA on all 3 web-servers
----                                                                                          - name: Install and setup DVWA dockers on Web-servers
+```
+---                                                                                         
+- name: Install and setup DVWA dockers on Web-servers
   hosts: webservers
   become: true
   tasks:
@@ -35,9 +37,9 @@ These files have been tested and used to generate a live ELK deployment on Azure
     systemd:
       name: docker
       enabled: yes
-
+```
 # used to setup elk server (KIBANA)
----
+```---
 - name: Install and setup Elk docker on new ELK-VM
   hosts: elk
   become: true
@@ -76,9 +78,9 @@ These files have been tested and used to generate a live ELK deployment on Azure
         - 5601:5601
         - 9200:9200
         - 5044:5044
-
+```
 # Used to setup system logs from DVWA servers with filebeat on Kibana
----
+```---
 - name: Install and setup Filebeat using our DVWA web-servers on Kibana
   hosts: webservers
   become: true
@@ -97,9 +99,9 @@ These files have been tested and used to generate a live ELK deployment on Azure
     command: sudo filebeat setup
   - name: start filebeat service
     command: sudo service filebeat start
-
+```
 # Used to setup metric data from DVWA servers with metricbeat on Kibana
----
+```---
 - name: Install and Launch Metricbeat using our DVWA web-servers on Kibana
   hosts: webservers
   become: true
@@ -118,7 +120,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
     command: sudo metricbeat setup
   - name: start metricbeat
     command: sudo service metricbeat start
-
+```
 This document contains the following details:
 - Description of the Topologu
 - Access Policies
