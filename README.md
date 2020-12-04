@@ -209,13 +209,13 @@ SSH into the control node and follow the steps below:
 
 # When setting up DVWA, make sure to use webservers and SSH into either Web VMS to validate installation. then try to connect to each one using the public IP (52.250.13.172). If done properly, you should be in the login page for DVWA.
 
-# When setting up the Elk server, make sure to use elk and SSH into the ELK-vm to validate the docker container is running. Try connecting to the ELK-VM public IP and port (http://104.42.215.204:5601/app/kibana). If done properly, kibana should load up and you should be in the kibana dashboard 
+# When setting up the Elk server, make sure to use elk and SSH into the ELK-vm to validate the docker container is running. Try connecting to the ELK-VM public IP and port (http://[your public ip]:5601/app/kibana). If done properly, kibana should load up and you should be in the kibana dashboard 
 (C:\Users\ldani\OneDrive\Desktop\kibanadashboard.png)
 
-# When setting up Filbeat on all 3 web-servers to communicate with the Elk Server, ensure you have a virtual network that can communicate both ways from elk to webservers. Then, in the .yml file  change hosts to webservers. If done properly, check in http://104.42.215.204:5601/app/kibana#/home/tutorial/systemLogs and scroll down and hit "check data". It should verify that there is data succesfully being received. 
+# When setting up Filbeat on all 3 web-servers to communicate with the Elk Server, ensure you have a virtual network that can communicate both ways from elk to webservers. Then, in the .yml file  change hosts to webservers. If done properly, check in http://[your public ip]:5601/app/kibana#/home/tutorial/systemLogs and scroll down and hit "check data". It should verify that there is data succesfully being received. 
 (C:\Users\ldani\OneDrive\Desktop\systemlogssetup.png)
 
-# When setting up Metricbeat on all 3 web-servvers, use the .yml file provided and ensure hosts is "webservers". If done properly, check in http://104.42.215.204:5601/app/kibana#/home/tutorial/dockerMetrics and scroll down and hit "check data." it should verify that there is data successfully being received.
+# When setting up Metricbeat on all 3 web-servvers, use the .yml file provided and ensure hosts is "webservers". If done properly, check in http://[your public ip]:5601/app/kibana#/home/tutorial/dockerMetrics and scroll down and hit "check data." it should verify that there is data successfully being received.
 (C:\Users\ldani\OneDrive\Desktop\metricbeatsetup.png)
 
 Commands that should be used when utilizing playbooks
